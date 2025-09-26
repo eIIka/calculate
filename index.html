@@ -4,51 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Vlad Kalkatin @eIIka" />
-    <meta name="description" content="This is a site for practice in the Hillel IT course. There will be a basic calculator with all the functions" />
+    <meta name="description" content="Calculator practice site" />
     <title>Web Calculate</title>
-    <style>
-        body {
-            color: orange;
-            background-color: black;
-        }
-        h1 {
-            color: orange;
-            text-align: center;
-            font-size: 80px;
-            margin-top: 12px;
-            margin-bottom: 10px;
-        }
-        table {
-            border: 1px solid black;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        input[type="button"] {
-            background-color: orange;
-            width: 100%;
-            padding: 20px 40px;
-            font-size: 24px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-        input[type="text"] {
-            padding: 20px 30px;
-            font-size: 24px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            border: 2px solid black;
-            width: 100%;
-            box-sizing: border-box;
-            color: black;
-        }
-        a {
-            color: orange;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
@@ -56,46 +14,48 @@
         <h1>Calculate</h1>
     </div>
 </header>
+
 <div>
     <table id="calculate">
         <thead>
-        <tr>
-            <td colspan="3">
-                <input type="text" id="result" autocomplete="off" />
-            </td>
-            <td>
-                <input type="button" value="c" onclick="clr()" />
-            </td>
-        </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="text" id="result" autocomplete="off" />
+                </td>
+                <td>
+                    <input type="button" value="c" onclick="clr()" />
+                </td>
+            </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input type="button" value="1" onclick="element('1')" /></td>
-            <td><input type="button" value="2" onclick="element('2')" /></td>
-            <td><input type="button" value="3" onclick="element('3')" /></td>
-            <td><input type="button" value="/" onclick="element('/')" /></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="4" onclick="element('4')" /></td>
-            <td><input type="button" value="5" onclick="element('5')" /></td>
-            <td><input type="button" value="6" onclick="element('6')" /></td>
-            <td><input type="button" value="*" onclick="element('*')" /></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="7" onclick="element('7')" /></td>
-            <td><input type="button" value="8" onclick="element('8')" /></td>
-            <td><input type="button" value="9" onclick="element('9')" /></td>
-            <td><input type="button" value="-" onclick="element('-')" /></td>
-        </tr>
-        <tr>
-            <td><input type="button" value="0" onclick="element('0')" /></td>
-            <td><input type="button" value="." onclick="element('.')" /></td>
-            <td><input type="button" value="=" onclick="res()" /></td>
-            <td><input type="button" value="+" onclick="element('+')" /></td>
-        </tr>
-        </tbody>
+<tr>
+    <td><input type="button" value="1" onclick="element('1')" /></td>
+    <td><input type="button" value="2" onclick="element('2')" /></td>
+    <td><input type="button" value="3" onclick="element('3')" /></td>
+    <td><input type="button" value="/" onclick="element('/')" /></td>
+</tr>
+<tr>
+    <td><input type="button" value="4" onclick="element('4')" /></td>
+    <td><input type="button" value="5" onclick="element('5')" /></td>
+    <td><input type="button" value="6" onclick="element('6')" /></td>
+    <td><input type="button" value="*" onclick="element('*')" /></td>
+</tr>
+<tr>
+    <td><input type="button" value="7" onclick="element('7')" /></td>
+    <td><input type="button" value="8" onclick="element('8')" /></td>
+    <td><input type="button" value="9" onclick="element('9')" /></td>
+    <td><input type="button" value="-" onclick="element('-')" /></td>
+</tr>
+<tr>
+    <td><input type="button" value="0" onclick="element('0')" /></td>
+    <td><input type="button" value="." onclick="element('.')" /></td>
+    <td><input type="button" value="=" onclick="res()" /></td>
+    <td><input type="button" value="+" onclick="element('+')" /></td>
+</tr>
+</tbody>
     </table>
 </div>
+
 <footer>
     <details>
         <summary>Author</summary>
@@ -105,39 +65,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.min.js"></script>
-<script>
-    function clr() {
-        document.getElementById("result").value = "";
-    }
-
-    function element(val) {
-        document.getElementById("result").value += val;
-    }
-
-    function eventFunction(event) {
-        const allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','.'];
-        if (allowedKeys.includes(event.key)) {
-            document.getElementById("result").value += event.key;
-        } else if (event.key === "Enter") {
-            res();
-        }
-    }
-
-    document.getElementById("result").addEventListener("keyup", function(event) {
-        if (event.key === "Enter") {
-            res();
-        }
-    });
-
-    function res() {
-        let x = document.getElementById("result").value;
-        try {
-            let y = math.evaluate(x);
-            document.getElementById("result").value = y;
-        } catch (e) {
-            document.getElementById("result").value = "Error";
-        }
-    }
-</script>
+<script src="script.js"></script>
 </body>
 </html>
+
