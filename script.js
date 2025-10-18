@@ -2,6 +2,11 @@ function clr() {
     document.getElementById("result").value = "";
 }
 
+function backspace() {
+    const result = document.getElementById("result");
+    result.value = result.value.slice(0, -1);
+}
+
 function element(val) {
     document.getElementById("result").value += val;
 }
@@ -15,12 +20,3 @@ function res() {
         document.getElementById("result").value = "Error";
     }
 }
-
-document.getElementById("result").addEventListener("keyup", function(event) {
-    const allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','.'];
-    if (allowedKeys.includes(event.key)) {
-        document.getElementById("result").value += event.key;
-    } else if (event.key === "Enter") {
-        res();
-    }
-});

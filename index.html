@@ -15,16 +15,15 @@
     </div>
 </header>
 
-<div>
+<main>
     <table id="calculate">
         <thead>
             <tr>
-                <td colspan="3">
-                    <input type="text" id="result" autocomplete="off" />
+                <td colspan="2">
+                    <input type="text" id="result" autocomplete="off" readonly />
                 </td>
-                <td>
-                    <input type="button" value="c" onclick="clr()" />
-                </td>
+                <td><input type="button" value="←" onclick="backspace()" /></td>
+                <td><input type="button" value="C" onclick="clr()" /></td>
             </tr>
         </thead>
         <tbody>
@@ -54,7 +53,7 @@
 </tr>
 </tbody>
     </table>
-</div>
+</main>
 
 <footer>
     <details>
@@ -68,4 +67,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
